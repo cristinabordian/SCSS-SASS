@@ -1,0 +1,59 @@
+$mainColor:#444;
+$darkColor: black;
+$lightColor: rgb(243, 28, 110);
+$size: 100px;
+
+body {
+    background-color: $mainColor;
+    
+}
+
+button {
+  width: $size * 2;
+  height: $size;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom:  0;
+  left: 0;
+  margin: auto;
+  background-color: $lightColor;
+  background-image: repeating-linear-gradient(
+             -27deg,
+             transparent,
+             transparent 30px,
+             lighten($darkColor, 26.5%) 30px,
+             lighten($darkColor, 26.5%) 40px
+    );
+
+    color: lighten($darkColor, 100%);
+    text-shadow: 1px 0px 1px $darkColor;
+    letter-spacing: 1em;
+    text-transform: uppercase;
+    border-radius: $size / 10;
+    border-image: linear-gradient(90deg, darken($lightColor, 70%), $darkColor, darken($lightColor, 70%) 50px) 1000;
+
+    &:hover {
+        border: $size / 20 solid $lightColor;
+    }
+
+    // animation only works if you click and hold - we can correct this with JS
+    &:active {
+        animation: letter-slide .5s linear;
+    }
+
+}
+
+@keyframes letter-slide {
+    from {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(.8);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
