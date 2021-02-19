@@ -1,0 +1,32 @@
+body {
+  background-color: #222;
+}
+
+button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#75091b), color-stop(#fcd8de), to(#75091b));
+  background: linear-gradient(#75091b, #fcd8de, #75091b);
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  color: white;
+  border: 3.33333px #75091b solid;
+  outline: none;
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 5px 1px #101010;
+          box-shadow: 0 0 5px 1px #101010;
+  text-shadow: 0 0 1px #75091b;
+  font-size: 16.66667px;
+}
+
+button:hover {
+  -webkit-box-shadow: 0 0 3px 1px #101010;
+          box-shadow: 0 0 3px 1px #101010;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fcd8de), color-stop(#75091b), to(#fcd8de));
+  background: linear-gradient(#fcd8de, #75091b, #fcd8de);
+}
+
+button:active {
+  -webkit-transform: translateX(15px) scale(1.5);
+          transform: translateX(15px) scale(1.5);
+}
+/*# sourceMappingURL=style.css.map */

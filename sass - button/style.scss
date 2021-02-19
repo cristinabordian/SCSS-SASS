@@ -1,0 +1,53 @@
+// 1. Use of VARIABLES
+// Crearea componentelor reusabile
+// 2. SCSS Functions - darken(), lighten(), brighten()...
+// 3. Operations (/, *, +, -, ...)
+// 5. Hierarchical code / selector extension
+$colorDark: #222;
+$colorLight: rgb(150, 12, 35);
+$size: 100px;
+
+body {
+    background-color: $colorDark;
+}
+
+button {
+    background: linear-gradient(
+        // $colorLight * 0.75, 
+        darken($colorLight, 7%),
+        lighten($colorLight, 60%),
+        darken($colorLight, 7%)
+    );
+    width: $size;
+    height: $size;
+    border-radius: 100%;
+    color: lighten($colorDark, 100%);
+    border: $size / 30  darken($colorLight, 7%) solid;
+    outline: none; // scoate conturul unui element activ
+    cursor: pointer;
+    box-shadow: 0 0  $size / 20  $size / 100  darken($colorDark, 7%);
+    text-shadow: 0 0  $size / 100   darken($colorLight, 7%);
+    font-size: $size / 6;
+    
+
+    &:hover {
+        box-shadow: 0 0 3px 1px darken($colorDark, 7%);
+        background: linear-gradient(lighten($colorLight, 60%), darken($colorLight, 7%), lighten($colorLight, 60%));
+        
+    }
+    
+
+    &:active {
+        transform: translateX(15px) scale(1.5);
+        
+    }
+    
+   
+}
+
+
+
+
+//HW1: add styles for active &:active
+//Read info on sass-lang.com: style rules, variables. mixin etc. 
+
