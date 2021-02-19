@@ -1,0 +1,86 @@
+$colorDark: #000;
+$colorLight: white;
+$mainColor: darkorange;
+$duration: 3s;
+
+@if $mainColor == green {
+    $mainColor: lime;
+}
+
+body {
+    background: radial-gradient(lighten($colorDark,30%),$colorDark);
+    
+    background-size: 100vw 100vh;
+}
+
+.fan {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+        
+        padding: 2.5em;
+        // border: 1px solid red;
+        width: 40em;
+        height: 3em;
+        position: absolute;
+        top:0;
+        right:0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        // Reminder** - trick to center element, funtions ONLY when width as WELL as height is specified.
+        // & links the selector to the parent element - li in this case
+        transform-origin: 90%;
+        border-radius: 1em 60% 60% 1em;
+        transition: $duration;
+        //** Reminder ** by default :before & :after are displayed as text elements
+        &::before {
+          content: "";
+          display: block;
+          background-color: $colorDark;
+          box-shadow: 0 0 1em .2em $colorDark;
+          width: 1em;
+          height: 1em;
+          position: absolute;
+          right: 10%;
+          top: calc(50% - .5em);
+          border-radius: 100%;
+
+        }
+        // constructie repetitiva sau ciclu 
+
+        @for $n from 1 through 13 {
+            &:nth-child(#{$n}) {  //#{} imbracam variabila in aceasta "haina" ptr ca sa-o pute pune direct in selector
+                background-color: lighten(
+                    darken($mainColor,40%), 
+                    3% * $n 
+                );
+                transform: rotate(0deg);
+                box-shadow: 0 0 .5em .25em 
+                lighten($colorDark, .25% * $n)
+                ;
+                color: 
+                 darken($colorLight, 39% - 3 * $n)
+                ;
+            }
+        }
+
+        
+    }
+    h2, p {
+        margin: 0;
+        
+    }
+
+
+    &:hover li {
+        @for $n from 1 through 13 {
+            &:nth-child(#{$n}) {  //#{} imbracam variabila in aceasta "haina" ptr ca sa-o pute pune direct in selector
+               
+                transform: rotate(105deg - $n * 15deg);
+                
+            }
+        }
+    }
+}
