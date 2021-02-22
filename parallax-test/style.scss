@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.parallax {
+    
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.parallax__layer > p {
+    position: absolute;
+    top: -80vh;
+    left: 10vw;
+  
+    width: 80vw;
+    height: 20vh;
+    
+    background-color: rgb(179, 169, 169);
+    font-size: 3em;
+    text-align: center;
+    font-family: cursive;
+   
+    opacity: 0.6;
+}
+
+.parallax__layer--base {
+    transform: translateZ(0);
+}
+
+
+.parallax__layer--back {
+  transform: translateZ(-4px) scale(5);
+} 
+
+
+
