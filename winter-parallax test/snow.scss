@@ -1,0 +1,84 @@
+$flakeLayerColor: #234;
+$flakeColor: #457;
+$flakeSize: 10px;
+$fallDuration: 20s;
+
+body {
+    overflow: hidden;
+    margin: 0;
+}
+
+.parallax {
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.flake-layer {
+    // background-color: $flakeLayerColor;
+    position: absolute;
+    top: 0;
+    right:0;
+    bottom: 0;
+    left: 0;
+
+    .flake {
+        
+        background-color: $flakeColor;
+        border-radius: $flakeSize;
+        position: absolute;
+        
+        top: -$flakeSize;
+
+
+
+        animation: fall $fallDuration linear infinite;
+
+        @keyframes fall {
+            from {top: -$flakeSize;}
+            to {top: 100%;}
+        }
+
+        @for $n from 1 through 100 {
+            &:nth-child(#{$n}) {
+                left: 1% * random(100);
+                animation-delay: $fallDuration * random();
+
+                $sizeK: 0.5 + random();
+
+                animation-duration: $fallDuration * 1 / $sizeK;
+
+                
+
+                width: $flakeSize * $sizeK;
+                height: $flakeSize * $sizeK;
+
+                background-color: lighten($flakeColor, $sizeK * 45%);
+            }
+        }
+
+       
+    }
+
+}
+
+.parallax__layer--base {
+   
+    transform: translateZ(0);
+}
+
+.parallax__layer--base img {
+   z-index: -1;
+   position: absolute;
+   width: 100vw;
+    
+}
+
+.parallax__layer--back {
+    transform: translateZ(-1px) scale(2);
+    z-index: 1;
+}
+
+
+//add any additional tricks 
